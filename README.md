@@ -22,5 +22,6 @@ GitHub repo docs first, skill later.
 - [Repo vs Skills 評估](./docs/repo-vs-skills-evaluation.md)
 - [Guideline-aware RAG 架構](./docs/guideline-rag-architecture.md)
 - [Hermes Clinical Search Brain](./docs/hermes-clinical-search-brain.md)
+- [Conditional Multi-agent Pipeline](./docs/multi-agent-pipeline.md)
 - [搜尋速度優化](./docs/search-speed-optimization.md)
 - [GitHub / Zeabur 維運筆記](./docs/github-zeabur-operations.md)
