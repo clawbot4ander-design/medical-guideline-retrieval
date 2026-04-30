@@ -81,9 +81,36 @@ debug/失敗分析時使用。
 - 醫療問答最重要的是檢索證據，不是 agent 自由推理。
 - Coverage / Failure / Regression 已經形成品質閉環。
 
+## 一般問答路徑要保持輕量
+
+一般問答不應每次跑所有重型 agent。建議：
+
+```text
+一般問題：
+Clinical Search Brain → Retrieval → Evidence Coverage Agent → Answer
+
+coverage 不足 / high-risk / debug：
++ Evidence review
++ Long-context verification
++ Failure Analyzer Agent
+
+部署前 / 修改 retrieval 後：
++ Regression Test Agent
+```
+
+`Evidence Coverage Agent` 是本地 facet 檢查，成本很低，可以常駐。
+`Failure Analyzer Agent` 和 `Regression Test Agent` 應主要放在 debug / 部署檢查。
+
+Adaptive safety 預設：
+
+```bash
+LINE_EVIDENCE_REVIEW_MODE=adaptive
+LINE_LONG_CONTEXT_VERIFICATION_MODE=adaptive
+LINE_ADAPTIVE_SAFETY_ENABLED=1
+```
+
 下一階段可考慮：
 
 - Citation Audit Agent：確認最終答案每個重點都有來源片段。
 - Ontology Builder Agent：離線掃描新 guideline，自動更新 concept profile。
 - Deployment Monitor Agent：部署後自動跑 health + regression。
-
